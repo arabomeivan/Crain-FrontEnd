@@ -23,7 +23,7 @@
     <!--Right side of content-->
       <form class="d-flex rightcontent">
         <input v-if="showsearchbox" id="searchbox"  type="text"  class="form-control" placeholder="Search">
-        <button type="button" class="btn btn-light rounded-circle" @click="show_hide_searchbox"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button type="button" class="btn btn-light rounded-circle togglesearchbox" @click="show_hide_searchbox"><i class="fa-solid fa-magnifying-glass"></i></button>
         <button type="button" class="btn btn-light rounded-circle"><i class="fa-regular fa-bell"></i></button>
         <img id="profilepicture" src="../assets/Profileimg.jpeg" alt="can't load profile picture" class="img-fluid rounded-circle">
 
@@ -202,20 +202,28 @@ color: #000000;
 
 
 /**Responsiveness for mobile phones */
-@media screen and (max-width: 480px)
+@media screen and (max-width: 600px)
 {
   .navbar
   {
     width:100%;
   }
 
+  .togglesearchbox
+  {
+    display: none;
+  }
+.btn
+{
+  margin-right: 20px;
+}
 .navbartitle
 {
   display: none;
 }
 .rightcontent
 {
-  margin-left: -10px;
+  margin-right: auto;
   margin-top: -10px;
 }
 
@@ -226,5 +234,25 @@ color: #000000;
 {
   display: none;
 }
+}
+
+@media screen and (max-width: 768px)
+{
+  .navbartitle
+  {
+    margin-right: 0px;
+    font-size: large;
+  }
+
+  .form-label
+  {
+    font-size: large;
+  }
+  .rightcontent
+{
+  margin-right: 30%;
+
+}
+
 }
 </style>
