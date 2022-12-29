@@ -2,12 +2,12 @@
   <div class="body d-flex">
 
 
-    <div class="sidebarcontainer">
+    <div v-if="display_sidebar" class="sidebarcontainer" >
       <SideBarContent />
     </div>
 
    <!--Navbar-->
-  <NavBar/>
+  <NavBar :display_sidebar="display_sidebar" @toggletaskbar="show_hide_sidebar($event)"/>
 
 
 <!--Router View-->
@@ -30,6 +30,21 @@ export default {
   {
     NavBar,
     SideBarContent
+  },
+
+  data()
+  {
+    return{
+      display_sidebar: true,
+    }
+  },
+
+  methods:
+  {
+    show_hide_sidebar(update)
+    {
+      this.display_sidebar = update
+    }
   }
 
 

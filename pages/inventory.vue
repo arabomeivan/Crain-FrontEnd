@@ -1,5 +1,5 @@
 <template lang="">
-  <div class="component_title">
+  <div class="component_title table-responsive">
     <table class="table">
   <thead>
     <tr>
@@ -45,4 +45,15 @@ font-weight: 700;
 font-size: 16px;
 line-height: 39px;
 }
+
+@media screen and (max-width: 600px)
+{
+
+.component_title{
+font-size: small;
+}
+
+}
+
+
 </style>

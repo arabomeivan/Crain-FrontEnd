@@ -7,18 +7,19 @@
   <div class="class col-sm-12 sidebarcontent">
 
     <!--Content 1 Logo-->
+    <NuxtLink to="/">
       <div class="row logo">
 
-        <div class="col-md-6">
-           <img src="../assets/logo.png" alt="not loading" class="img-fluid">
-        </div>
+<div class="col-md-6">
+   <img src="../assets/logo.png" alt="not loading" class="img-fluid">
+</div>
 
-        <div class="col-md-6 dash">
-           Dash
-           </div>
+<div class="col-md-6 dash">
+   Dash
+   </div>
 
-      </div>
-
+</div>
+    </NuxtLink>
 
     <!--Main Menu text-->
     <div class="row mainmenu">

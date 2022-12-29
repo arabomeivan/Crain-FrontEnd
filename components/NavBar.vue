@@ -6,9 +6,9 @@
      <!--LEFT SIDE OF THE NAVBAR CONTENT-->
 
   <!--Button to shrink Side bar-->
-  <button id="minimizesidebar" type="button" class="btn btn-light rounded-circle">
-    <i class="fa-solid fa-chevron-left"></i>
-
+  <button id="minimizesidebar" type="button" class="btn btn-light rounded-circle" @click="hide_show_sidebar">
+    <i v-if="iconvisbility_left" class="fa-solid fa-chevron-left"></i>
+    <i v-if="iconvisbility_right" class="fa-solid fa-chevron-right" ></i>
   </button>
 
 
@@ -52,16 +52,47 @@
 export default {
 name: 'NavBar',
 
+
+props:['display_sidebar'],
+
 data() {
     return {
 
       showsearchbox:false,
       sidebarshown:true,
       iconvisbility_left: true,
-      iconvisbility_right: false
+      iconvisbility_right: false,
+
+      // For responsiveness when sidebar is hidden and made full
+      navbar:
+      {
+        minimizesidebar:'-40px',
+        rightcontent: '20%'
+
+      },
+
+
+      mobile_navbar:
+      {
+        rightcontent:
+        {
+          margin_right: '30%',
+          margin_top: '0.1px'
+        },
+
+        minimizesidebar:
+        {
+          margin_left:'-40px',
+        }
+
+      }
+
+
+
     }
   },
   computed: {
+
 
     pageName() {
       // eslint-disable-next-line eqeqeq
@@ -99,8 +130,42 @@ data() {
     show_hide_searchbox()
     {
       this.showsearchbox = !this.showsearchbox
+    },
+
+    hide_show_sidebar()
+   {
+
+    this.$emit('toggletaskbar', !this.display_sidebar)
+    this.iconvisbility_left = !this.iconvisbility_left
+    this.iconvisbility_right = !this.iconvisbility_right
+
+    if(this.navbar.minimizesidebar ==='-40px'
+    && this.navbar.rightcontent ==='20%' && this.mobile_navbar.rightcontent.margin_right ==='30%'
+    && this.mobile_navbar.minimizesidebar.margin_left ==='-40px' )
+    {
+      this.navbar.minimizesidebar = '0px'
+      this.navbar.margin_left = '60px'
+      this.navbar.rightcontent = '0%'
+      this.mobile_navbar.rightcontent.margin_right ='0px'
+      this.mobile_navbar.minimizesidebar.margin_left = 'auto'
+
     }
+
+    else
+    {
+      this.navbar.minimizesidebar = '-40px'
+      this.navbar.margin_left = '0px'
+      this.navbar.rightcontent = '20%'
+      this.mobile_navbar.rightcontent.margin_right ='30%'
+      this.mobile_navbar.minimizesidebar.margin_left = '-40px'
+    }
+
    }
+
+   },
+
+
+
 
 }
 </script>
@@ -108,7 +173,7 @@ data() {
   /**styling navbar */
 .rightcontent
 {
-  margin-right: 20%;
+  margin-right: v-bind('navbar.rightcontent');
 }
   .navbartitle
 {
@@ -122,7 +187,7 @@ data() {
 }
 #minimizesidebar
 {
-  margin-left: -40px;
+  margin-left: v-bind('navbar.minimizesidebar');
 }
 #searchbox
 {
@@ -223,12 +288,12 @@ color: #000000;
 }
 .rightcontent
 {
-  margin-right: auto;
-  margin-top: -10px;
+  margin-right: v-bind('mobile_navbar.rightcontent.margin_right');
+  margin-top: v-bind('mobile_navbar.rightcontent.margin_top');
 }
 
 #minimizesidebar{
-    margin-top: -20px;
+    margin-top: v-bind('mobile_navbar.minimizesidebar.margin_left');
 }
 #profilename
 {
@@ -250,7 +315,7 @@ color: #000000;
   }
   .rightcontent
 {
-  margin-right: 30%;
+  margin-right: v-bind('mobile_navbar.rightcontent.margin_right');
 
 }
 
