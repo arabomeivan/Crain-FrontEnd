@@ -66,7 +66,7 @@ data() {
       // For responsiveness when sidebar is hidden and made full
       navbar:
       {
-        minimizesidebar:'-40px',
+        minimizesidebar:'20%',
         rightcontent: '20%'
 
       },
@@ -76,13 +76,14 @@ data() {
       {
         rightcontent:
         {
-          margin_right: '30%',
-          margin_top: '0.1px'
+          margin_left: '40%'
         },
 
         minimizesidebar:
         {
-          margin_left:'-40px',
+          margin_left:'32%',
+          margin_top:'0px',
+          margin_right:'0px'
         }
 
       }
@@ -139,25 +140,24 @@ data() {
     this.iconvisbility_left = !this.iconvisbility_left
     this.iconvisbility_right = !this.iconvisbility_right
 
-    if(this.navbar.minimizesidebar ==='-40px'
-    && this.navbar.rightcontent ==='20%' && this.mobile_navbar.rightcontent.margin_right ==='30%'
-    && this.mobile_navbar.minimizesidebar.margin_left ==='-40px' )
+    if(this.navbar.minimizesidebar ==='20%'
+    && this.navbar.rightcontent ==='20%' && this.mobile_navbar.rightcontent.margin_left ==='40%'
+    && this.mobile_navbar.minimizesidebar.margin_left ==='32%' )
     {
-      this.navbar.minimizesidebar = '0px'
+      this.navbar.minimizesidebar = '0%'
       this.navbar.margin_left = '60px'
       this.navbar.rightcontent = '0%'
-      this.mobile_navbar.rightcontent.margin_right ='0px'
-      this.mobile_navbar.minimizesidebar.margin_left = 'auto'
+      this.mobile_navbar.minimizesidebar.margin_left = '2%'
 
     }
 
     else
     {
-      this.navbar.minimizesidebar = '-40px'
+      this.navbar.minimizesidebar = '20%'
       this.navbar.margin_left = '0px'
       this.navbar.rightcontent = '20%'
-      this.mobile_navbar.rightcontent.margin_right ='30%'
-      this.mobile_navbar.minimizesidebar.margin_left = '-40px'
+      this.mobile_navbar.rightcontent.margin_left ='40%'
+      this.mobile_navbar.minimizesidebar.margin_left = '32%'
     }
 
    }
@@ -171,10 +171,6 @@ data() {
 </script>
 <style scoped>
   /**styling navbar */
-.rightcontent
-{
-  margin-right: v-bind('navbar.rightcontent');
-}
   .navbartitle
 {
   margin-right: 150px;
@@ -288,12 +284,13 @@ color: #000000;
 }
 .rightcontent
 {
-  margin-right: v-bind('mobile_navbar.rightcontent.margin_right');
-  margin-top: v-bind('mobile_navbar.rightcontent.margin_top');
+
+  margin-left: v-bind('mobile_navbar.rightcontent.margin_left');
 }
 
 #minimizesidebar{
-    margin-top: v-bind('mobile_navbar.minimizesidebar.margin_left');
+    margin-top: v-bind('mobile_navbar.minimizesidebar.margin_top');
+    margin-left: v-bind('mobile_navbar.minimizesidebar.margin_left');
 }
 #profilename
 {

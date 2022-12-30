@@ -1,5 +1,5 @@
 <template lang="">
-  <div>
+  <div class="component_title">
    charts
   </div>
 </template>
@@ -10,5 +10,15 @@ export default {
 }
 </script>
 <style scoped>
+
+@media screen and (max-width: 600px)
+{
+
+.component_title{
+
+margin-left: 15%;
+}
+
+}
 
 </style>

@@ -52,6 +52,7 @@ line-height: 39px;
 
 .component_title{
 font-size: small;
+margin-left: 15%;
 }
 
 }

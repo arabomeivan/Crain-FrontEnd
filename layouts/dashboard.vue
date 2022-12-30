@@ -1,16 +1,18 @@
 <template lang="">
-  <div class="body d-flex">
+  <div class="body">
 
+   <!--Navbar-->
+   <NavBar :display_sidebar="display_sidebar" @toggletaskbar="show_hide_sidebar($event)"/>
 
+<!-- Sidebar -->
     <div v-if="display_sidebar" class="sidebarcontainer" >
       <SideBarContent />
     </div>
 
-   <!--Navbar-->
-  <NavBar :display_sidebar="display_sidebar" @toggletaskbar="show_hide_sidebar($event)"/>
 
 
-<!--Router View-->
+
+<!-- Router View-->
 
 <!--pages will be displayed here-->
 <div class="class container pages">
@@ -63,6 +65,7 @@ export default {
 width: 260px;
 height: 1064px;
 background: #081A51;
+position: fixed;
 }
 .body
     {
@@ -71,10 +74,9 @@ background: #081A51;
 /**placing content to be in middle */
 .pages
 {
-    margin-top: 150px;
-    width:80%;
-    margin-left: auto;
-    margin-right: auto;
+    padding-top: 150px;
+    width:70%;
+    margin-left: 22%;
 }
 
 /**Responsiveness for mobile phones */
