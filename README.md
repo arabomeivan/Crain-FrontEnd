@@ -16,5 +16,8 @@ It is built to serve mainly two roles namely: Admin, and Employee.
 ### Employee
 Employees only have one action and i.e to make requests for any equipment needed for task delivery
 
-# Stack for development
-Nuxtjs, Boostrap5, Highcharts, and firebase
+# Stack for Front end development
+Nuxtjs, Boostrap5, Highcharts
+
+# Stack for Backend development
+Laravel
