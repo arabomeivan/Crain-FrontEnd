@@ -17,7 +17,7 @@
 src="../assets/user.png" alt="" class="img-fluid" style="width: 20px;
 height: 20px;">
 </span>
-<input type="text" v-model="username" class="form-control border-white username rounded-right" placeholder="USERNAME" aria-label="Username" aria-describedby="basic-addon1" >
+<input type="text" id="username" v-model="username" class="form-control border-white username rounded-right" placeholder="USERNAME" data-test-id="usernamec" aria-label="Username" aria-describedby="basic-addon1" >
 </div>
 
 <div class="input-group mb-5">

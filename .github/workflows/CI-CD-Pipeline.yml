@@ -1,8 +1,8 @@
 name: CI/CD
-on: push 
+on: push
 
 jobs:
-    TestingSyntax:
+    TestingCodeSyntax:
         runs-on: ubuntu-latest
         steps:
         - name: Clone code repository
@@ -17,11 +17,33 @@ jobs:
         - name: Run EsLint
           run: npm run lint
 
+    TestApplicationFunctionality:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Clone code repository
+          uses: actions/checkout@v2
+        - name: Installing Node
+          uses: actions/setup-node@v2
+          with:
+            node-version: "16"
 
-          
-          
+        - name: Installing dependencies
+          run: npm install
 
-        
-    
+        - name: Installing Cypress
+          run: npx cypress install
 
- 
+        - name: Run Cypress Tests
+          run:  npm run test
+
+
+
+
+
+
+
+
+
+
+
+
