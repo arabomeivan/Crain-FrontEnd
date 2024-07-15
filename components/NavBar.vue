@@ -40,7 +40,7 @@
           <img id="dropdownMenuButton1" src="../assets/bx_bx-chevron-down.png" alt="can't load dropdown" class="img-fluid"  data-bs-toggle="dropdown" aria-expanded="false">
   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
     <li><a class="dropdown-item" href="#" style="width: auto;">Settings</a></li>
-    <li><a class="dropdown-item" href="#" style="width: auto;">Log out</a></li>
+    <li><a class="dropdown-item" href="#" style="width: auto;" @click="logout">Log out</a></li>
   </ul>
 </div>
       </form>
@@ -131,6 +131,9 @@ data() {
     show_hide_searchbox()
     {
       this.showsearchbox = !this.showsearchbox
+    },
+    logout(){
+      this.router.push('/')
     },
 
     hide_show_sidebar()

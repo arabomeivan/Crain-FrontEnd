@@ -4,6 +4,11 @@
   <div>
     <img src="../assets/icons8-user-100.png" class="img-fluid mx-auto d-block mb-5" alt="" >
 
+<div v-if="loginFail" class="my-2 text-center" id="errorMessage">
+  <p class="text-danger">
+  Invalid username or password. Please try again.
+  </p>
+</div>
 
 <form style="width:fit-content;" class="mx-auto loginform" @submit.prevent="login"  >
  <div class="input-group mb-5">
@@ -12,7 +17,7 @@
 src="../assets/user.png" alt="" class="img-fluid" style="width: 20px;
 height: 20px;">
 </span>
-<input type="text" class="form-control border-white username rounded-right" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" >
+<input type="text" v-model="username" class="form-control border-white username rounded-right" placeholder="USERNAME" aria-label="Username" aria-describedby="basic-addon1" >
 </div>
 
 <div class="input-group mb-5">
@@ -21,13 +26,11 @@ height: 20px;">
 src="../assets/lock.png" alt="" class="img-fluid" style="width: 20px;
 height: 20px;">
 </span>
-<input type="password" class="form-control border-white password rounded-right" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" >
+<input v-model="password" type="password" class="form-control border-white password rounded-right" placeholder="PASSWORD" id="password" data-test-id="password" aria-label="Username" aria-describedby="basic-addon1" >
 </div>
 
 
-<button type="submit" class="btn btn-light loginbtn mx-auto d-block">Login</button>
-
-
+<button type="submit" class="btn btn-light loginbtn mx-auto d-block" id="loginButton">Login</button>
 
 
 </form>
@@ -36,21 +39,59 @@ height: 20px;">
 </template>
 
 <script>
+
 export default {
   name: 'IndexPage',
   layout: 'login',
 
+  data(){
+    return{
+      username: '',
+      password: '',
+      loginFail: false
+    }
+  },
+
+  mounted(){
+    const LoginCred= {
+  name: "Ivan Arabome",
+  username:'arabomeivan',
+  password: "Atleticomadrid_2."
+}
+
+const LoginCredentials = JSON.stringify(LoginCred)
+    localStorage.setItem('Logincredentials', LoginCredentials)
+  },
   methods:
   {
     login()
     {
-      this.$router.push('/charts')
+      const LoginCred = localStorage.getItem('Logincredentials');
+
+      const LoginCredentials = JSON.parse(LoginCred)
+
+      if(this.username===LoginCredentials.username && this.password===LoginCredentials.password)
+
+      {
+        this.$router.push('/charts')
+      }
+
+      else{
+        this.loginFail = true;
+        setTimeout(() => {
+          this.loginFail = false;
+        }, 2000);
+      }
+
+
+
     }
   }
 }
 </script>
 
 <style scoped>
+
 .username, .password
 {
 
@@ -63,9 +104,6 @@ font-weight: 300;
 font-size: 14px;
 line-height: 20px;
 /* identical to box height, or 143% */
-
-
-text-transform: uppercase;
 
 color: #FFFFFF;
 border-left: none;
