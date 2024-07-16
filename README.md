@@ -21,3 +21,23 @@ Nuxtjs, Boostrap5, Highcharts
 
 # Stack for Backend development
 Laravel
+
+
+## Setup
+
+Project is setup in an old Node version so you need to install nvm first.
+
+- To do that you can navigate to this site https://www.freecodecamp.org/news/node-version-manager-nvm-install-guide/
+- Next run nvm --version to confirm installation
+- run nvm-install 16
+- run nvm use 16.20.2 or the version pointed out in the terminal
+- open project directory and run npm install
+
+## To execute test locally
+-- Type npm run test on the terminal---> this will run the test scripts on a headless mode
+
+
+
+
+
+
