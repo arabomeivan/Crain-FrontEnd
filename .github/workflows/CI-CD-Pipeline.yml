@@ -46,6 +46,7 @@ jobs:
     DeployChanges:
       runs-on: ubuntu-latest
       needs: TestApplicationFunctionality
+      if: success()
 
       steps:
         - name: Clone code repository
