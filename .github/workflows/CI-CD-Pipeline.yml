@@ -47,12 +47,12 @@ jobs:
           run: sudo apt-get install -y chromium-browser
 
         - name: Executing Selenium Tests
-          uses: npm run test:selenium
+          run: npm run selenium:test
 
     DeployChanges:
       runs-on: ubuntu-latest
       needs: TestApplicationFunctionality
-      if: success()
+      if: github.ref == 'refs/heads/main'
 
       steps:
         - name: Clone code repository
