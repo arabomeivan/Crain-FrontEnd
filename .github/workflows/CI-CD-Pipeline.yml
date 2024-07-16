@@ -1,5 +1,10 @@
 name: CI/CD
-on: push
+on:
+  push:
+    branches:
+      main
+  pull_request:
+    branches: ['main', 'develop']
 
 jobs:
     TestingCodeSyntax:
@@ -19,6 +24,8 @@ jobs:
 
     TestApplicationFunctionality:
       runs-on: ubuntu-latest
+      needs: TestingCodeSyntax
+      if: always()
       steps:
         - name: Clone code repository
           uses: actions/checkout@v2
@@ -35,6 +42,33 @@ jobs:
 
         - name: Run Cypress Tests
           run:  npm run test
+
+    DeployChanges:
+      runs-on: ubuntu-latest
+      needs: TestApplicationFunctionality
+
+      steps:
+        - name: Clone code repository
+          uses: actions/checkout@v2
+        - name: Installing Node
+          uses: actions/setup-node@v2
+          with:
+            node-version: "16"
+
+        - name: Installing dependencies
+          run: npm install
+
+        - name: Build Project
+          run:  npm run generate
+
+        - name: Deploy to Netlify
+          run: npx netlify deploy --prod --dir=public
+          env:
+           NETLIFY_AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
+           NETLIFY_SITE_ID: ${{ secrets.CRAIN_SITE_ID }}
+
+
+
 
 
 
