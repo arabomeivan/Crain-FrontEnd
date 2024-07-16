@@ -13,6 +13,9 @@ class LoginPage{
     cy.get('#loginButton').click()
   }
 
+  VerifyLoginFailure(){
+   return cy.get('#errorMessage')
+  }
 }
 
 
