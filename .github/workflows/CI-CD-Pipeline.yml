@@ -61,12 +61,11 @@ jobs:
         - name: Build Project
           run:  npm run generate
 
-        - name: Deploy to Netlify
-          run: npx netlify deploy --prod --dir=public
-          env:
-           NETLIFY_AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
-           NETLIFY_SITE_ID: ${{ secrets.CRAIN_SITE_ID }}
+        - name: Install Vercel CLI
+          run: npm install -g vercel
 
+        - name: Deploy to Vercel
+          run:  vercel --token ${{ secrets.VERCEL_DEPLOY_TOKEN }} --prod
 
 
 
