@@ -47,7 +47,7 @@ jobs:
           run: sudo apt-get install -y chromium-browser
 
         - name: Executing Selenium Tests
-          uses: npm run test:selenium
+          run: npm run test:selenium
 
     DeployChanges:
       runs-on: ubuntu-latest
