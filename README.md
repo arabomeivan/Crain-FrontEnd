@@ -1,4 +1,4 @@
-# CRAIN Management System-FrontEnd
+# CRAIN Management System-Frontend
 
 ## About
 CRIAN management system is an information system built to keep records and track the equipment used in a small business or corporate environment.
